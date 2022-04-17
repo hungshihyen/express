@@ -1,13 +1,16 @@
 const express = require('express');
+const { response } = require("express");
 const app = express();
 const port = 3001;
 
 
+// 25822
+
 const StreamChat = require('stream-chat').StreamChat;
-const client = StreamChat.getInstance('92uhdv5t2jke','rrhnsf286ntc5kswmknbvqtpz4czr2wuy8ckjvwhvjn3ak8vhntvmstxzvxg5tqx');
+const client = StreamChat.getInstance('k79p9js9fgaw', 'yqqgc63thz9zeh4fsxx494vgh4ea2hntvpvgxz6qs7jpw7csxk3p4x5rn265gya5');
 
 
-app.get('/',async (req, res) => {
+app.get('/', async (req, res) => {
 
 
     // const {blocklists} = await client.listBlockLists();
@@ -20,25 +23,26 @@ app.get('/',async (req, res) => {
     // });
 
 
-    await client.banUser('1379', {
-        banned_by_id: '1379', // ID of the user who is performing the ban (Server-side auth)
-        timeout: 60,
-        reason: 'Banned for one hour',
+    const ressssss = await client.banUser('10009', {
+        banned_by_id:'10009',
     });
+
+
+
 
     // console.log(client)
     //
     // await client.unbanUser('1379');
 
-    const response = await client.queryBannedUsers({channel_cid: 'commerce:public'});
-
-    console.log(response)
-
-    res.send(response);
+    // const response = await client.queryBannedUsers({channel_cid: 'commerce:public'});
+    //
+    // console.log(response)
+    //
+    // res.send(ressssss);
 
 });
 
-app.post('/answer', function (req, res){
+app.post('/answer', function (req, res) {
     res.send('123123');
 });
 
